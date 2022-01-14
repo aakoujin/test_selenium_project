@@ -51,6 +51,7 @@ public class WebTest extends BaseTest {
 //    }
 
     //Task B
+    //sometimes fails for no reason at "Add to wishlist" step/ requires refreshing Wishlist page
     @Test
     public void wishlistTest() {
         homePage.openHomePage();
