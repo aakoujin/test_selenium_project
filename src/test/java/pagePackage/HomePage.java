@@ -6,9 +6,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage extends BaseTest {
-    WebDriver webDriver;
+public class HomePage extends BasePage {
 
     By searchBar = new By.ByXPath("//*[@id=\"noo-site\"]/header/div[2]/div/a");
 
@@ -17,8 +17,8 @@ public class HomePage extends BaseTest {
     By tShirt = new By.ByXPath("//*[@id=\"noo-site\"]/div[2]/div[3]/div/div[2]/div/div/div/div[2]/div[2]/div[1]/div/div[1]/a");
 
 
-    public HomePage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+    public HomePage(WebDriver webDriver, WebDriverWait wait) {
+        super(webDriver, wait);
     }
 
     public void openHomePage() {
@@ -45,12 +45,5 @@ public class HomePage extends BaseTest {
                 .perform();
     }
 
-    public boolean atPage() {
-        return getWebDriver().getTitle().equals("ToolsQA Demo Site – ToolsQA – Demo E-Commerce Site");
-    }
 
-    @Override
-    public WebDriver getWebDriver() {
-        return webDriver;
-    }
 }

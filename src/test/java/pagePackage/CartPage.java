@@ -1,12 +1,12 @@
 package pagePackage;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CartPage {
-    WebDriver webDriver;
+public class CartPage extends BasePage {
 
-    public CartPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+    public CartPage(WebDriver webDriver, WebDriverWait wait) {
+        super(webDriver, wait);
     }
 
     public void openCart() {

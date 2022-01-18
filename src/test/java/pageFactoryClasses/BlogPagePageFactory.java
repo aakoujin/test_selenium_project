@@ -6,15 +6,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BlogPage_PF extends BaseTest {
+public class BlogPagePageFactory extends BaseTest {
     WebDriver webDriver;
+    WebDriverWait wait;
 
     @FindBy(xpath = "//*[@id=\"post-505\"]/div[2]/a")
     WebElement readMore1;
 
-    public BlogPage_PF(WebDriver webDriver){
+    public BlogPagePageFactory(WebDriver webDriver, WebDriverWait wait){
         this.webDriver = webDriver;
+        this.wait = wait;
 
         AjaxElementLocatorFactory ajaxFactory = new AjaxElementLocatorFactory(this.webDriver, 2);
         PageFactory.initElements(ajaxFactory, this);

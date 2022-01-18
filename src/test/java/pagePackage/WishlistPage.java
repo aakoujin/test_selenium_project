@@ -1,12 +1,13 @@
 package pagePackage;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WishlistPage {
-    WebDriver webDriver;
+public class WishlistPage extends BasePage{
 
-    public WishlistPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+
+    public WishlistPage(WebDriver webDriver, WebDriverWait wait) {
+        super(webDriver, wait);
     }
 
     public void openWishList() {

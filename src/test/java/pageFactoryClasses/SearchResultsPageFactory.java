@@ -6,9 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SearchResultsPage_PF extends BaseTest {
+public class SearchResultsPageFactory extends BaseTest {
     WebDriver webDriver;
+    WebDriverWait wait;
 
     @FindBy(xpath = "//*[@id=\"noo-site\"]/div[2]/div[1]/div/div[2]/form[2]/select")
     WebElement sizeSelector;
@@ -19,8 +21,9 @@ public class SearchResultsPage_PF extends BaseTest {
     @FindBy(xpath = "//*[@id=\"noo-site\"]/div[2]/div[2]/div/div/div[1]/div")
     WebElement filteredOption;
 
-    public SearchResultsPage_PF(WebDriver webDriver){
+    public SearchResultsPageFactory(WebDriver webDriver, WebDriverWait wait){
         this.webDriver = webDriver;
+        this.wait = wait;
 
         AjaxElementLocatorFactory ajaxFactory = new AjaxElementLocatorFactory(this.webDriver, 2);
         PageFactory.initElements(ajaxFactory, this);

@@ -5,11 +5,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ProductPage extends BaseTest {
-    WebDriver webDriver;
+public class ProductPage extends BasePage{
 
-    By addToWishListButton = new By.ByXPath("/html/body/div[2]/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/div/a");
+
+    //By addToWishListButton = new By.ByXPath("//*[@id=\"product-704\"]/div[1]/div[2]/div[2]/div/a");
+    //add_to_wishlist single_add_to_wishlist
+    By addToWishListButton = new By.ByClassName("add_to_wishlist");
 
     By colorSelector = new By.ByXPath("//*[@id=\"pa_color\"]");
 
@@ -19,26 +24,30 @@ public class ProductPage extends BaseTest {
 
     By sizeSelectorOption = new By.ByXPath("//*[@id=\"pa_size\"]/option[3]");
 
-    By quantitySelector = new By.ByXPath("//*[@id=\"noo-quantity-4643\"]");
+    By quantitySelector = new By.ById("noo-quantity-9255");
 
     By addToCardButton = new By.ByXPath("//*[@id=\"product-1497\"]/div[1]/div[2]/form/div/div[2]/button");
 
-    public ProductPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+
+
+    public ProductPage(WebDriver webDriver, WebDriverWait wait) {
+        super(webDriver, wait);
     }
 
-    public void addToWishList(String xpath) {
+    public void addToWishList() {
         Actions action = new Actions(webDriver);
 
-        // Hoover over animation mock
+
+        wait.until(ExpectedConditions.elementToBeClickable(addToWishListButton));
+
         action
-                .moveToElement(webDriver.findElement(addToWishListButton))
                 .moveToElement(webDriver.findElement(addToWishListButton))
                 .click()
                 .build()
                 .perform();
 
-        webDriver.findElement(addToWishListButton).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(addToWishListButton));
+        wait.until(ExpectedConditions.elementToBeClickable(addToWishListButton));
     }
 
     public void selectColor() {
@@ -53,6 +62,7 @@ public class ProductPage extends BaseTest {
 
     public void selectQuantity() {
         webDriver.findElement(quantitySelector).clear();
+        wait.until(ExpectedConditions.textToBe(quantitySelector,""));
         webDriver.findElement(quantitySelector).sendKeys("3");
     }
 

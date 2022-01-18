@@ -7,9 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage_PF extends BaseTest {
+public class HomePagePageFactory extends BaseTest {
     WebDriver webDriver;
+    WebDriverWait wait;
 
     @FindBy(xpath = "//*[@id=\"noo-site\"]/header/div[2]/div/a")
     WebElement searchBox;
@@ -17,8 +20,9 @@ public class HomePage_PF extends BaseTest {
     @FindBy(className = "form-control")
     WebElement searchInput;
 
-    public HomePage_PF(WebDriver webDriver){
+    public HomePagePageFactory(WebDriver webDriver, WebDriverWait wait){
         this.webDriver = webDriver;
+        this.wait = wait;
 
         AjaxElementLocatorFactory ajaxFactory = new AjaxElementLocatorFactory(this.webDriver, 2);
         PageFactory.initElements(ajaxFactory, this);
