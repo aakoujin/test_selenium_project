@@ -19,6 +19,7 @@ public class BaseTest {
     private static WebDriver webDriver;
     private static WebDriverWait wait;
 
+
     @BeforeClass
     public static void setup() {
         WebDriverManager.chromedriver().setup();
@@ -29,8 +30,8 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void killDriver() {
-        getWebDriver().quit();
+    public static void killDriver() {
+        BaseTest.webDriver.quit();
     }
 
     private static void setWebDriver(WebDriver webDriver) {

@@ -1,8 +1,12 @@
 package Tests;
 
 import base.BaseTest;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import pageFactoryClasses.*;
 import pagePackage.*;
 
@@ -36,10 +40,10 @@ public class WebTest extends BaseTest {
         this.productPagePageFactory = new ProductPagePageFactory(BaseTest.getWebDriver(), BaseTest.getWait());
     }
 
-//    @After
-//    public void endTest(){
-//        baseTest.killDriver();
-//    }
+    @AfterClass
+    public static void endTest() {
+       BaseTest.killDriver();
+    }
 
     //Task B
     @Test
@@ -70,7 +74,7 @@ public class WebTest extends BaseTest {
 
     //Task D
     @Test
-    public void captchaCommentTest(){
+    public void captchaCommentTest() {
         blogPagePageFactory.openBlogPage();
         blogPagePageFactory.openReadMore();
         basePage.scrollDown(2050);
@@ -84,7 +88,7 @@ public class WebTest extends BaseTest {
 
     //Task E
     @Test
-    public void pageFactoryTest(){
+    public void pageFactoryTest() {
         homePagePageFactory.openHomePage();
         homePagePageFactory.openSearchBox();
         homePagePageFactory.inputSearchRequest("BLUE");

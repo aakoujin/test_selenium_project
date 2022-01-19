@@ -23,7 +23,7 @@ public class ProductPage extends BasePage{
 
     By sizeSelectorOption = new By.ByXPath("//*[@id=\"pa_size\"]/option[3]");
 
-    By quantitySelector = new By.ByXPath("//*[@id=\"noo-quantity-3005\"]");
+    By quantitySelector = new By.ByXPath("//div[2]/div[2]/div/div/div[2]/div[1]/div[2]/form/div/div[2]/div/div/input");
 
     By addToCardButton = new By.ByXPath("//*[@id=\"product-1497\"]/div[1]/div[2]/form/div/div[2]/button");
 
