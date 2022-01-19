@@ -21,11 +21,7 @@ public class BasePage extends BaseTest {
         js.executeScript("window.scrollBy(0," + scrollDepth +")", "");
     }
     public boolean atPage() {
-        return getWebDriver().getTitle().equals("ToolsQA Demo Site – ToolsQA – Demo E-Commerce Site");
+        return webDriver.getTitle().equals("ToolsQA Demo Site – ToolsQA – Demo E-Commerce Site");
     }
 
-    @Override
-    public WebDriver getWebDriver() {
-        return webDriver;
-    }
 }

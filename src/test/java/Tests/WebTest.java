@@ -9,11 +9,9 @@ import pagePackage.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WebTest extends BaseTest {
-    BaseTest baseTest;
     BasePage basePage;
     HomePage homePage;
     ProductPage productPage;
-//    JavascriptExecutor js;
     WishlistPage wishlistPage;
     CartPage cartPage;
     BlogPagePageFactory blogPagePageFactory;
@@ -22,23 +20,20 @@ public class WebTest extends BaseTest {
     ProductPagePageFactory productPagePageFactory;
     HomePagePageFactory homePagePageFactory;
 
+
     @Before
     public void initTest() {
-        this.baseTest = new BaseTest();
-        baseTest.setup();
+        this.basePage = new BasePage(BaseTest.getWebDriver(), BaseTest.getWait());
+        this.homePage = new HomePage(BaseTest.getWebDriver(), BaseTest.getWait());
+        this.productPage = new ProductPage(BaseTest.getWebDriver(), BaseTest.getWait());
+        this.wishlistPage = new WishlistPage(BaseTest.getWebDriver(), BaseTest.getWait());
+        this.cartPage = new CartPage(BaseTest.getWebDriver(), BaseTest.getWait());
 
-        this.basePage = new BasePage(baseTest.getWebDriver(), baseTest.getWait());
-        this.homePage = new HomePage(baseTest.getWebDriver(), baseTest.getWait());
-        this.productPage = new ProductPage(baseTest.getWebDriver(), baseTest.getWait());
-        this.wishlistPage = new WishlistPage(baseTest.getWebDriver(), baseTest.getWait());
-        this.cartPage = new CartPage(baseTest.getWebDriver(), baseTest.getWait());
-        //this.js = (JavascriptExecutor) baseTest.getWebDriver();
-
-        this.homePagePageFactory = new HomePagePageFactory(baseTest.getWebDriver(), baseTest.getWait());
-        this.blogPagePageFactory = new BlogPagePageFactory(baseTest.getWebDriver(), baseTest.getWait());
-        this.saddleBagBlogPagePageFactory = new SaddleBagBlogPagePageFactory(baseTest.getWebDriver(), baseTest.getWait());
-        this.searchResultsPagePageFactory = new SearchResultsPageFactory(baseTest.getWebDriver(), baseTest.getWait());
-        this.productPagePageFactory = new ProductPagePageFactory(baseTest.getWebDriver(), baseTest.getWait());
+        this.homePagePageFactory = new HomePagePageFactory(BaseTest.getWebDriver(), BaseTest.getWait());
+        this.blogPagePageFactory = new BlogPagePageFactory(BaseTest.getWebDriver(), BaseTest.getWait());
+        this.saddleBagBlogPagePageFactory = new SaddleBagBlogPagePageFactory(BaseTest.getWebDriver(), BaseTest.getWait());
+        this.searchResultsPagePageFactory = new SearchResultsPageFactory(BaseTest.getWebDriver(), BaseTest.getWait());
+        this.productPagePageFactory = new ProductPagePageFactory(BaseTest.getWebDriver(), BaseTest.getWait());
     }
 
 //    @After
@@ -47,7 +42,6 @@ public class WebTest extends BaseTest {
 //    }
 
     //Task B
-    //sometimes fails for no reason at "Add to wishlist" step/ requires refreshing Wishlist page
     @Test
     public void wishlistTest() {
         homePage.openHomePage();

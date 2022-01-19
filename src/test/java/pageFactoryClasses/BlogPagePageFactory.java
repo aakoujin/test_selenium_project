@@ -29,6 +29,7 @@ public class BlogPagePageFactory extends BaseTest {
     }
 
     public void openReadMore(){
+        wait.until(ExpectedConditions.elementToBeClickable(readMore1));
         readMore1.click();
     }
 }

@@ -1,6 +1,7 @@
 package base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,19 +12,20 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
+
 
 public class BaseTest {
-    private WebDriver webDriver;
-    private WebDriverWait wait;
+    private static WebDriver webDriver;
+    private static WebDriverWait wait;
 
-    @BeforeMethod(alwaysRun = true)
-    public void setup() {
+    @BeforeClass
+    public static void setup() {
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
-        this.wait = new WebDriverWait(webDriver, 5);
         setWebDriver(webDriver);
-
+        setWait(webDriver);
     }
 
     @AfterMethod
@@ -31,15 +33,19 @@ public class BaseTest {
         getWebDriver().quit();
     }
 
-    private void setWebDriver(WebDriver webDriver) {
-        this.webDriver = webDriver;
+    private static void setWebDriver(WebDriver webDriver) {
+        BaseTest.webDriver = webDriver;
     }
 
-    public WebDriver getWebDriver() {
+    public static WebDriver getWebDriver() {
         return webDriver;
     }
 
-    public WebDriverWait getWait() {
-        return this.wait;
+    public static void setWait(WebDriver webDriver){
+        BaseTest.wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+    }
+
+    public static WebDriverWait getWait() {
+        return wait;
     }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SearchResultsPageFactory extends BaseTest {
@@ -30,14 +31,17 @@ public class SearchResultsPageFactory extends BaseTest {
     }
 
     public void openSizeSelector(){
+        wait.until(ExpectedConditions.elementToBeClickable(sizeSelector));
         sizeSelector.click();
     }
 
     public void selectSizeOption(){
+        wait.until(ExpectedConditions.elementToBeClickable(sizeSelectorOption));
         sizeSelectorOption.click();
     }
 
     public void selectFirstFilteredOption(){
+        wait.until(ExpectedConditions.elementToBeClickable(filteredOption));
         filteredOption.click();
     }
 }

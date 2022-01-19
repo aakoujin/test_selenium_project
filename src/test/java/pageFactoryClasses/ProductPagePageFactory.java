@@ -50,6 +50,7 @@ public class ProductPagePageFactory extends BaseTest {
     }
 
     public void addToCart() {
+        wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
         addToCartButton.click();
     }
 

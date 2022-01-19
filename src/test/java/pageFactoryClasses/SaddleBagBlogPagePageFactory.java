@@ -38,22 +38,27 @@ public class SaddleBagBlogPagePageFactory extends BaseTest {
     }
 
     public void enterName(String name){
+        wait.until(ExpectedConditions.elementToBeClickable(nameField));
         nameField.sendKeys(name);
     }
 
     public void enterEmail(String email){
+        wait.until(ExpectedConditions.elementToBeClickable(emailField));
         emailField.sendKeys(email);
     }
 
     public void enterURL(String url){
+        wait.until(ExpectedConditions.elementToBeClickable(urlField));
         urlField.sendKeys(url);
     }
 
     public void enterComment(String comment){
+        wait.until(ExpectedConditions.elementToBeClickable(commentBox));
         commentBox.sendKeys(comment);
     }
 
     public void submit(){
+        wait.until(ExpectedConditions.elementToBeClickable(commentBox));
         submitButton.click();
     }
 

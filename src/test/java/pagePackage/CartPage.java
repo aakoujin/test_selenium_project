@@ -10,6 +10,6 @@ public class CartPage extends BasePage {
     }
 
     public void openCart() {
-        this.webDriver.get("https://shop.demoqa.com/cart/");
+        webDriver.get("https://shop.demoqa.com/cart/");
     }
 }

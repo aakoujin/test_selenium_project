@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends BasePage {
@@ -26,16 +27,19 @@ public class HomePage extends BasePage {
     }
 
     public void openSearchBar() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchBar));
         getWebDriver().findElement(searchBar).click();
     }
 
     public void enterSearchRequest(String input) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchRequestField));
         getWebDriver().findElement(searchRequestField).sendKeys(input, Keys.ENTER);
     }
 
     public void selectTShirt() {
         Actions action = new Actions(webDriver);
 
+        wait.until(ExpectedConditions.presenceOfElementLocated(tShirt));
         // Hoover over animation mock
         action
                 .moveToElement(getWebDriver().findElement(tShirt))

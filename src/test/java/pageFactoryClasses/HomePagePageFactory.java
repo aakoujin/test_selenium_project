@@ -33,6 +33,7 @@ public class HomePagePageFactory extends BaseTest {
     }
 
     public void openSearchBox(){
+        wait.until(ExpectedConditions.elementToBeClickable(searchBox));
         searchBox.click();
     }
 

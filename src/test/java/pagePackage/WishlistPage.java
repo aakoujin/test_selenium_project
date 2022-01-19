@@ -11,6 +11,7 @@ public class WishlistPage extends BasePage{
     }
 
     public void openWishList() {
+
         webDriver.get("https://shop.demoqa.com/wishlist/");
     }
 }
